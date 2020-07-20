@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG= "LoginActivity";
@@ -36,8 +39,8 @@ public class LoginActivity extends AppCompatActivity {
         String load_id = sharedClass.loadUserId(LoginActivity.this);
         Boolean load_status = sharedClass.loadLoginStatus(LoginActivity.this);
 
-        Log.e(TAG, load_id);
-        Log.e(TAG, String.valueOf(load_status));
+//        Log.e(TAG, load_id);
+//        Log.e(TAG, String.valueOf(load_status));
 
 
 
@@ -54,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
 
 
-        getData_url = "http://192.168.254.129/mysql_android_pushData.php";  //회원정보를 가지고 있는 url
+        getData_url = "http://cd3222cd42e5.ngrok.io/mysql_android_pushData.php";  //회원정보를 가지고 있는 url
 
         btn_login = findViewById(R.id.login);
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 login_task = new URLConnector(getData_url);
+                Log.e(TAG, getData_url);
                 login_task.start();
 
                 boolean can_login = false;
@@ -77,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 String result = login_task.getResult();
-                Log.e(TAG, "result: " + result);
+//                Log.e(TAG, "result: " + result);
                 JSONArray jsonArray = null;
                 try {
                     jsonArray = new JSONArray(result);
@@ -159,4 +163,11 @@ public class LoginActivity extends AppCompatActivity {
         Log.e(TAG, "onResume");
     }
 
+    public void push_category_to_server(ViewGroup container, String user_id, String category_name, String category_num) {
+        GetPost_php task = new GetPost_php(container.getContext());
+        task.execute("http://192.168.254.129/mysql_android_pushData.php");
+
+    }
+
 }
+

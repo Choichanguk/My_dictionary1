@@ -91,6 +91,8 @@ public class PHPRequest extends Thread{
 
             String result = readStream(conn.getInputStream());
             conn.disconnect();
+            Log.e("PHPRequest", "result");
+            Log.e("PHPRequest", result);
             return result;
         }
         catch (Exception e) {

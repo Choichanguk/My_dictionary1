@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG= "MainActivity";
 
     private FragmentManager fragmentManager = getSupportFragmentManager();
+
     private FragmentCategory fragmentCategory = new FragmentCategory();
     private FragmentSearch fragmentSearch = new FragmentSearch();
     private  FragmentFind fragmentFind = new FragmentFind();
