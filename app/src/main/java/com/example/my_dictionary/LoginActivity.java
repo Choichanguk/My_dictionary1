@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.app.AlertDialog;
+import android.app.Application;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +37,22 @@ public class LoginActivity extends AppCompatActivity {
         Log.e(TAG, "onCreate");
         setContentView(R.layout.activity_login);
 
+        Context context = LoginActivity.this;
+        Context context1 = getApplicationContext();
+        Context context2 = getApplication();
+        Context context3 = getParent();
+        Context context4 = getBaseContext();
+        Context context5 = this;
+//        ContextWrapper contextWrapper = new ContextWrapper();     // ContextWrapper 가 Context를 상속
+        Log.e(TAG, "LoginActivity context: " + context);
+        Log.e(TAG, "getApplicationContext: " + context1);
+        Log.e(TAG, "getApplication: " + context2);
+        Log.e(TAG, "getParent: " + context3);
+        Log.e(TAG, "getBaseContext: " + context4);
+        Log.e(TAG, "this: " + context5);
+
+
+
         //shared 확인
         SharedClass sharedClass = new SharedClass();
         String load_id = sharedClass.loadUserId(LoginActivity.this);
@@ -57,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
 
 
-        getData_url = "http://cd3222cd42e5.ngrok.io/mysql_android_pushData.php";  //회원정보를 가지고 있는 url
+        getData_url = "http://192.168.254.129/mysql_android_pushData.php";  //회원정보를 가지고 있는 url
 
         btn_login = findViewById(R.id.login);
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 login_task = new URLConnector(getData_url);
-                Log.e(TAG, getData_url);
+
                 login_task.start();
 
                 boolean can_login = false;
@@ -81,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 String result = login_task.getResult();
-//                Log.e(TAG, "result: " + result);
+
                 JSONArray jsonArray = null;
                 try {
                     jsonArray = new JSONArray(result);
@@ -89,14 +108,21 @@ public class LoginActivity extends AppCompatActivity {
                     for(int i=0; i < jsonArray.length(); i++){
 
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-//                        Log.e(TAG, "ID: "+jsonObject.getString("ID") + "/PW: "+ jsonObject.getString("PW"));
+
                         String id = jsonObject.getString("ID");
                         String pw = jsonObject.getString("PW");
+                        String user_index = jsonObject.getString("user_index");
+                        Log.e(TAG, "id: " + id);
+                        Log.e(TAG, "pw: " + pw);
+                        Log.e(TAG, "user_index: " + user_index);
 
-                        Log.e(TAG, "ID: " + id + "PW: " + pw);
-                        Log.e(TAG, "input_it: " + input_id + "input_pw: " + input_pw);
+
                         if(input_id.equals(id) && input_pw.equals(pw)){
                             can_login = true;
+                            SharedClass sharedClass = new SharedClass();
+                            sharedClass.saveUserId(LoginActivity.this, input_id);
+                            sharedClass.saveLoginStatus(LoginActivity.this, true);
+                            sharedClass.saveUserIndex(LoginActivity.this, user_index);
                             break;
 
                         }
@@ -112,10 +138,6 @@ public class LoginActivity extends AppCompatActivity {
                     /**
                      * 로그인 성공 시 로그인 상태와 유저 ID를 쉐어드에 저장.
                      */
-
-                    SharedClass sharedClass = new SharedClass();
-                    sharedClass.saveUserId(LoginActivity.this, input_id);
-                    sharedClass.saveLoginStatus(LoginActivity.this, true);
 
                     Toast.makeText(getApplicationContext(), "로그인에 성공했습니다.", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -166,7 +188,6 @@ public class LoginActivity extends AppCompatActivity {
     public void push_category_to_server(ViewGroup container, String user_id, String category_name, String category_num) {
         GetPost_php task = new GetPost_php(container.getContext());
         task.execute("http://192.168.254.129/mysql_android_pushData.php");
-
     }
 
 }

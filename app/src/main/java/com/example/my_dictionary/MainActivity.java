@@ -1,11 +1,13 @@
 package com.example.my_dictionary;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentCategory fragmentCategory = new FragmentCategory();
     private FragmentSearch fragmentSearch = new FragmentSearch();
-    private  FragmentFind fragmentFind = new FragmentFind();
+    private FragmentShare fragmentShare = new FragmentShare();
 
     TextView userID_set;
 
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case R.id.find: {
-                        transaction.replace(R.id.frameLayout, fragmentFind).commitAllowingStateLoss();
+                        transaction.replace(R.id.frameLayout, fragmentShare).commitAllowingStateLoss();
                         break;
                     }
                 }
@@ -118,4 +120,11 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.e(TAG, "onResume");
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
 }

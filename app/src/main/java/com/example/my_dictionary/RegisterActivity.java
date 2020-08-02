@@ -84,7 +84,6 @@ public class RegisterActivity extends AppCompatActivity {
                 task = new URLConnector(getData_url);
                 task.start();
                 try{
-
                     task.join();    // task thread가 끝날때까지 기다려준다. -> 동기처리
                     System.out.println("waiting... for result");
                 }
@@ -187,7 +186,7 @@ public class RegisterActivity extends AppCompatActivity {
                      * 서버안에 있는 php파일로 post 방식으로 유저 정보를 보낸다.
                      */
                     try {
-                        request = new PHPRequest(IP_ADDRESS, String.valueOf(register_id.getText()), String.valueOf(password.getText()), "basic");
+                        request = new PHPRequest(IP_ADDRESS, String.valueOf(register_id.getText()), String.valueOf(password.getText()));
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }

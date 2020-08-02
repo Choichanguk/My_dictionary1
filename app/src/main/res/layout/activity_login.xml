@@ -12,7 +12,7 @@
         android:layout_height="61dp"
         android:layout_marginTop="120dp"
         android:gravity="center"
-        android:text="나만의 단어장"
+        android:text="나만의 용어 정리장"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

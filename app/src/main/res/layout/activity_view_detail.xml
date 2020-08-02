@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/border">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/border">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/result_word"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:background="@drawable/underline"
+                    android:padding="10dp"
+                    android:text="TextView"
+                    android:textSize="30sp"
+                    android:layout_margin="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    android:textColor="#002AFF"
+                    android:textStyle="bold"
+                    />
+                <!--            android:textIsSelectable="true"-->
+<!--                <ImageButton-->
+<!--                    android:id="@+id/btn_option"-->
+<!--                    android:layout_width="34dp"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:layout_marginEnd="4dp"-->
+<!--                    android:layout_marginRight="4dp"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:srcCompat="@drawable/ic_baseline_more_vert_24" />-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/result_definition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textSize="20sp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="16dp"
+                android:textIsSelectable="true"
+                android:textColor="#002AFF"/>
+        </LinearLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="30dp">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="148dp"
+                        android:layout_marginLeft="148dp"
+                        android:layout_weight="5"
+                        android:gravity="center"
+                        android:text="추가 내용"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        android:textStyle="bold"/>
+
+                    <ImageButton
+                        android:id="@+id/btn_plus_added_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.333"
+                        app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:id="@+id/added_contents_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#D0E4E2"
+                            android:padding="15dp"
+                            android:text="사전 검색"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/btn_close_search"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="116dp"
+                            android:layout_marginLeft="116dp"
+                            app:srcCompat="@drawable/ic_baseline_arrow_upward_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.484"
+                            android:visibility="gone"/>
+                        <ImageView
+                            android:id="@+id/btn_open_search"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="116dp"
+                            android:layout_marginLeft="116dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.484"
+                            app:srcCompat="@drawable/ic_baseline_arrow_downward_24" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/added_recycler"
+                        android:layout_width="363dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/border"
+                        android:visibility="gone"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp">
+
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#D0E4E2"
+                            android:padding="15dp"
+                            android:text="직접 입력"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/btn_close_write"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="116dp"
+                            android:layout_marginLeft="116dp"
+                            app:srcCompat="@drawable/ic_baseline_arrow_upward_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.484"
+                            android:visibility="gone"/>
+                        <ImageView
+                            android:id="@+id/btn_open_write"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="116dp"
+                            android:layout_marginLeft="116dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.484"
+                            app:srcCompat="@drawable/ic_baseline_arrow_downward_24" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/added_recycler2"
+                        android:layout_width="363dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/border"
+                        android:visibility="gone"/>
+                </LinearLayout>
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_margin="15dp">-->
+<!--                    <Button-->
+<!--                        android:id="@+id/btn_add_content"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="내용 추가하기"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        />-->
+<!--                    <Button-->
+<!--                        android:id="@+id/btn_add_search"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginLeft="20dp"-->
+<!--                        android:text="검색"-->
+<!--                        android:visibility="gone"/>-->
+<!--                    <Button-->
+<!--                        android:id="@+id/btn_add_write"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="직접 입력"-->
+<!--                        android:visibility="gone"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:id="@+id/add_search"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:visibility="gone"-->
+<!--                    >-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/searchView"-->
+<!--                        android:layout_width="300dp"-->
+<!--                        android:layout_height="39dp"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        android:background="@drawable/border"-->
+<!--                        android:padding="5dp"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintHorizontal_bias="0.19"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />-->
+
+<!--                    <RadioGroup-->
+<!--                        android:id="@+id/radioGroup"-->
+<!--                        android:layout_width="289dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:gravity="center"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintHorizontal_bias="0.014"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/textView">-->
+
+<!--                        <RadioButton-->
+<!--                            android:id="@+id/korean"-->
+<!--                            android:layout_width="100dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="국어사전" />-->
+
+<!--                        <RadioButton-->
+<!--                            android:id="@+id/english"-->
+<!--                            android:layout_width="100dp"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="한영사전" />-->
+<!--                    </RadioGroup>-->
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/btn_submit"-->
+<!--                        android:layout_width="61dp"-->
+<!--                        android:layout_height="59dp"-->
+<!--                        android:layout_marginStart="4dp"-->
+<!--                        android:layout_marginLeft="4dp"-->
+<!--                        android:layout_marginTop="36dp"-->
+<!--                        app:layout_constraintBottom_toTopOf="@+id/search_recycle"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/searchView"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintVertical_bias="0.942"-->
+<!--                        app:srcCompat="@android:drawable/ic_menu_search" />-->
+
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/search_recycle"-->
+<!--                        android:layout_width="353dp"-->
+<!--                        android:layout_height="339dp"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintHorizontal_bias="0.496"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/searchView"/>-->
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:id="@+id/add_write"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:visibility="gone">-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/writeView"-->
+<!--                        android:layout_width="331dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="15dp"-->
+<!--                        android:ems="10"-->
+<!--                        android:hint="추가할 내용을 입력하세요"-->
+<!--                        android:inputType="textMultiLine"-->
+<!--                        android:padding="15dp"-->
+<!--                        android:scrollbars="vertical"-->
+<!--                        android:textSize="20sp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintHorizontal_bias="0.0"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintVertical_bias="0.466" />-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btn_submit_write"-->
+<!--                        android:layout_width="54dp"-->
+<!--                        android:layout_height="46dp"-->
+<!--                        android:layout_marginTop="12dp"-->
+<!--                        android:text="추가"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent" />-->
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

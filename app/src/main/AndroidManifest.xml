@@ -6,24 +6,39 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".Activity_dialog3"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"/>
         <activity
-            android:name=".RegisterActivity" />
+            android:name=".Activity_dialog2"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity android:name=".Activity_show_shared_category" />
+        <activity
+            android:name=".Small_Dialog"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity
+            android:name=".Activity_dialog"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+        <activity android:name=".ActivityViewPager" />
+        <activity android:name=".SearchCategoryWordActivity" />
+        <activity android:name=".ViewDetailActivity" />
+        <activity android:name=".CategoryActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

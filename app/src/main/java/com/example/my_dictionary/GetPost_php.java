@@ -61,14 +61,40 @@ public class GetPost_php extends AsyncTask<String, Void, String> {
             postParameters = col_name1 + "=" + value1;
             Log.e("postParameters", postParameters);
         }
-
-
-        else{
+        else if(params.length == 5){
+            String col_name2 = (String) params[3];
+            String value2 = (String) params[4];
+            postParameters = col_name1 + "=" + value1 + "&" + col_name2 + "=" + value2;
+            Log.e("postParameters", postParameters);
+        }
+        else if(params.length == 7){
             String col_name2 = (String) params[3];
             String value2 = (String) params[4];
             String col_name3 = (String) params[5];
             String value3 = (String) params[6];
             postParameters = col_name1 + "=" + value1 + "&" + col_name2 + "=" + value2 + "&" + col_name3 + "=" + value3;
+            Log.e("postParameters", postParameters);
+        }
+        else if(params.length == 9){
+            String col_name2 = (String) params[3];
+            String value2 = (String) params[4];
+            String col_name3 = (String) params[5];
+            String value3 = (String) params[6];
+            String col_name4 = (String) params[7];
+            String value4 = (String) params[8];
+            postParameters = col_name1 + "=" + value1 + "&" + col_name2 + "=" + value2 + "&" + col_name3 + "=" + value3 + "&" + col_name4 + "=" + value4;
+            Log.e("postParameters", postParameters);
+        }
+        else{
+            String col_name2 = (String) params[3];
+            String value2 = (String) params[4];
+            String col_name3 = (String) params[5];
+            String value3 = (String) params[6];
+            String col_name4 = (String) params[7];
+            String value4 = (String) params[8];
+            String col_name5 = (String) params[9];
+            String value5 = (String) params[10];
+            postParameters = col_name1 + "=" + value1 + "&" + col_name2 + "=" + value2 + "&" + col_name3 + "=" + value3 + "&" + col_name4 + "=" + value4 + "&" + col_name5 + "=" + value5;
             Log.e("postParameters", postParameters);
         }
 
@@ -130,7 +156,7 @@ public class GetPost_php extends AsyncTask<String, Void, String> {
 
             bufferedReader.close();
 
-
+            Log.e("창욱", "공유 카테고리 삭제 완료");
             return sb.toString();
 
 

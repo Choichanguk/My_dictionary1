@@ -39,4 +39,24 @@ public class SharedClass {
         Boolean is_login = sharedPreferences.getBoolean("is_login", false);
         return is_login;
     }
+
+    public static void saveUserIndex(Context context, String index){
+        SharedPreferences sharedPreferences = getPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("user_index", index);
+        editor.apply();
+    }
+
+    public static String loadUserIndex(Context context) {
+        SharedPreferences sharedPreferences = getPreferences(context);
+        String user_id = sharedPreferences.getString("user_index", null);
+
+        if(user_id == null){
+            user_id = "";
+        }
+        return user_id;
+    }
+
+
+
 }

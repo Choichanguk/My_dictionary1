@@ -16,12 +16,12 @@ import java.net.URL;
  */
 
 public class PHPRequest extends Thread{
-    String ID, PW, category1;
+    String ID, PW;
 
     @Override
     public void run() {
         super.run();
-        push_userInfo(ID, PW, category1);
+        push_userInfo(ID, PW);
     }
 
     private URL url;
@@ -32,14 +32,13 @@ public class PHPRequest extends Thread{
      * 아이디 생성 시 기본적으로 저장되는 정보
      * @param ID
      * @param PW
-     * @param category1
      * @throws MalformedURLException
      */
-    public PHPRequest(String url, String ID, String PW, String category1) throws MalformedURLException {
+    public PHPRequest(String url, String ID, String PW) throws MalformedURLException {
         this.url = new URL(url);
         this.ID = ID;
         this.PW = PW;
-        this.category1 = category1;
+
     }
 
 
@@ -65,12 +64,11 @@ public class PHPRequest extends Thread{
      * 서버에 POST방식으로 데이터를 전달해주는 method
      * @param ID
      * @param PW
-     * @param category1
      * @return
      */
-    public String push_userInfo(final String ID, final String PW,final String category1) {
+    public String push_userInfo(final String ID, final String PW) {
         try {
-            String postData = "ID=" + ID + "&" + "PW=" + PW + "&" + "category=" + category1;
+            String postData = "ID=" + ID + "&" + "PW=" + PW;
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             // Content-Type이란 request에 실어 보내는 데이터(body)의 type의 정보를 표현

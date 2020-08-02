@@ -1,10 +1,17 @@
 package com.example.my_dictionary;
 
 import android.content.Context;
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,17 +23,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     private ArrayList<CategoryItem> mdata= null;
     private Context mContext;
-//    private  OnItemClickListener mListener = null; // 리스너 객체를 저장하는 변수
+    private  OnItemClickListener mListener = null; // 리스너 객체를 저장하는 변수
 
-//    // 커스텀 리스너 인터페이스
-//    public interface OnItemClickListener{
-//        void onItemClick(View v, int position);
-//    }
+    // 커스텀 리스너 인터페이스
+    public interface OnItemClickListener{
+        void onItemClick(View v, View itemView, int position);
+    }
 //
-//    // OnItemClickListener 객체를 전달하는 메서드
-//    public void setOnItemClickListener(OnItemClickListener listener){
-//        this.mListener = listener;
-//    }
+    // OnItemClickListener 객체를 전달하는 메서드
+    public void setOnItemLongClickListener(OnItemClickListener listener){
+        this.mListener = listener;
+    }
 //
 //
 //    // --------------------------------------------------------------------------------------------------
@@ -53,18 +60,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         CategoryItem item = mdata.get(position);
 
         holder.category_name.setText(item.getCategory_name());
-
-//        holder.delete.setTag(holder.getAdapterPosition()); // 뷰홀더의 어댑터 포지션을 태그로 달아준다.
-//        holder.delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int position = (int)v.getTag(); // 달아뒀던 태그 값을 position 변수에 담는다.
-//                mdata.remove(position);
-//                notifyDataSetChanged();
-//
-//
-//            }
-//        });
+        holder.num_word.setText(item.getNum_word());
     }
 
     @Override
@@ -72,33 +68,44 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return mdata.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView category_name;
+        TextView category_name, num_word;
+        ImageButton btn_option;
 
 
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             category_name = itemView.findViewById(R.id.category_name);
+            btn_option = itemView.findViewById(R.id.btn_option);
+            num_word = itemView.findViewById(R.id.num_word);
 
 
-//            edit.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    int pos = getAdapterPosition();
-//                    if(pos != RecyclerView.NO_POSITION){
-//
-//                        // 리스너 객체의 메서드 호출
-//                        if(mListener != null){
-//                            mListener.onItemClick(v, pos);
-//                        }
-//
-//                    }
-//                }
-//            });
+            btn_option.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final int position = getAdapterPosition();
+                    // 리스너 객체의 메서드 호출
+                    if(position != RecyclerView.NO_POSITION){
+                        mListener.onItemClick(v, itemView, position);
+                    }
+                }
+            });
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final int position = getAdapterPosition();
+                    // 리스너 객체의 메서드 호출
+                    if(position != RecyclerView.NO_POSITION){
+                        mListener.onItemClick(v, itemView, position);
+                    }
+                }
+            });
         }
-    }
 
+    }
 }
+

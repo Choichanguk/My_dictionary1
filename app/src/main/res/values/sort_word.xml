@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menu_word">
+        <item>전체 보기</item>
+        <item>★표시 단어만 보기</item>
+        <item>최신 순</item>
+        <item>오래된 순</item>
+    </string-array>
+</resources>

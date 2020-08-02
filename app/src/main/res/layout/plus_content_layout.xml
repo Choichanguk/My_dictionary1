@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="내용 추가하기"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginVertical="15dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="15dp">
+                        <Button
+                            android:id="@+id/btn_add_search"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="사전 검색"
+                            android:visibility="visible"/>
+                        <Button
+                            android:id="@+id/btn_add_write"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="직접 입력"
+                            android:visibility="visible"/>
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/add_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        >
+
+                        <EditText
+                            android:id="@+id/searchView"
+                            android:layout_width="281dp"
+                            android:layout_height="38dp"
+                            android:layout_marginTop="48dp"
+                            android:background="@drawable/border"
+                            android:padding="5dp"
+                            app:layout_constraintEnd_toStartOf="@+id/btn_submit"
+                            app:layout_constraintHorizontal_bias="0.805"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <RadioGroup
+                            android:id="@+id/radioGroup"
+                            android:layout_width="289dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <RadioButton
+                                android:id="@+id/korean"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:text="국어사전" />
+
+                            <RadioButton
+                                android:id="@+id/english"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:text="한영사전" />
+
+
+
+                        </RadioGroup>
+
+                        <ImageButton
+                            android:id="@+id/btn_submit"
+                            android:layout_width="46dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="48dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:background="@drawable/ic_baseline_search_24"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/search_recycle"
+                            android:layout_width="353dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="100dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:id="@+id/add_write"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/writeView"
+                            android:layout_width="290dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:ems="10"
+                            android:hint="추가할 내용을 입력하세요"
+                            android:inputType="textMultiLine"
+                            android:padding="15dp"
+                            android:scrollbars="vertical"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.966" />
+
+                        <Button
+                            android:id="@+id/btn_submit_write"
+                            android:layout_width="54dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginRight="16dp"
+                            android:text="추가"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </LinearLayout>
+
+</LinearLayout>
